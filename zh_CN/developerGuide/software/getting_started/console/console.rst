@@ -106,11 +106,11 @@ Windows
 
 .. figure:: img/Comm_port.png
 
-必须通过 ``Minicom`` 或类似的串行控制台应用查看启动参考信息。
+必须通过 ``picocom`` 或类似的串行控制台应用查看启动参考信息。
 
 **使用适用于 Linux 的 Windows 子系统（WSL）**
 
-对于 Windows 用户，建议使用 WSL 配合 ``minicom`` 访问串行控制台。WSL 在 Windows 上提供 Linux 环境，允许将 USB 设备连接到 Linux 工具。
+对于 Windows 用户，建议使用 WSL 配合 ``picocom`` 访问串行控制台。WSL 在 Windows 上提供 Linux 环境，允许将 USB 设备连接到 Linux 工具。
 
 如果尚未设置 WSL，请先按照 :ref:`WSL 设置指南 <wsl_setup>` 操作。
 
@@ -168,7 +168,7 @@ Linux 和 Mac
 
 Linux 内核广泛支持 USB 转串行转换器，因此大多数情况下，插入转换器后很快就会被检测到。
 
-- |minicom|、|screen| 或类似的远程串行控制台设置程序。
+- |picocom|、|screen| 或类似的远程串行控制台设置程序。
 
 建立串行控制台连接
 =======================================
@@ -195,80 +195,111 @@ Linux 内核广泛支持 USB 转串行转换器，因此大多数情况下，插
 
 连接到 PC 的第一块 Red Pitaya 板卡会创建名为 ``/dev/ttyUSB0`` 的设备。如果连接了 **N** 个 USB 或串行设备，它们将显示为 ``/dev/ttyUSBn``，其中 **n** 为 **{0, 1, ..., N-1}**。访问这些设备时，程序应使用 ``sudo`` 运行。
 
-必须使用 Minicom 或类似的串行控制台应用查看启动参考日志。
+必须使用 picocom 或类似的串行控制台应用查看启动参考日志。
 
-``minicom``
+``picocom``
 ------------
 
-Minicom 是一种基于文本的调制解调器控制和终端仿真程序，通常用于设置远程串行控制台。
+picocom 是一个极简的串行通信程序，常用于访问嵌入式系统的串行控制台。
 
-
-使用 ``-s`` 选项配置 ``minicom``。
+要连接到 Red Pitaya 的串行控制台，请输入
 
 .. code-block:: shell-session
 
-    sudo minicom -s
+    sudo picocom -b 115200 /dev/ttyUSB0
 
+picocom 提供了许多用于配置串行端口的选项。不过只需显式设置波特率（使用 ``--baud`` 或 ``-b`` 选项），其他选项的默认值都是合理的。
 
-随后会打开配置菜单。
+除非使用 ``--quiet`` （或 ``-q``）选项启动，否则 picocom 启动时会先打印一系列信息（包括串行端口设置），然后显示“Terminal ready”：
 
-.. figure:: img/minicom_main_menu.png
-    :width: 400
+.. code-block:: shell-session
 
-进入 ``Serial Port Setup``，按 **Enter**，然后设置以下选项：
+    $ sudo picocom -b 115200 /dev/ttyUSB0
+    picocom v3.1
 
-- Serial Device: ``/dev/ttyUSB0`` （设备索引为 ``0`` 或更大的数字）
-- Bps/Par/Bits: ``115200 8N1`` （波特率、字节长度、奇偶校验和停止位）
-- Hardware/Software Flow Control: No（应禁用流控制）
+    port is        : /dev/ttyUSB0
+    flowcontrol    : none
+    baudrate is    : 115200
+    parity is      : none
+    databits are   : 8
+    stopbits are   : 1
+    escape is      : C-a
+    local echo is  : no
+    noinit is      : no
+    noreset is     : no
+    hangup is      : no
+    nolock is      : no
+    send_cmd is    : sz -vv
+    receive_cmd is : rz -vv -E
+    imap is        : 
+    omap is        : 
+    emap is        : crcrlf,delbs,
+    logfile is     : none
+    initstring     : none
+    exit_after is  : not set
+    exit is        : no
 
-.. figure:: img/minicom_settings.png
-    :width: 600
+    Type [C-a] [C-h] to see available commands
+    Terminal ready
 
-``Minicom`` 需要使用特殊的 ``Control+A`` 按键序列进行操作。最常用的命令如下：
+此时，picocom 已将你的终端连接到 Red Pitaya 的串行控制台。
 
-    - 按 ``Control+A`` 后按 ``X`` 退出 Minicom
-    - 按 ``Control+A`` 后按 ``Z`` 打开帮助菜单
+picocom 需要使用特殊的 ``Control+A`` 按键序列进行操作。最常用的命令如下：
+   
+    - 按 ``Control+A`` 后按 ``Control-X`` 退出 picocom
+    - 按 ``Control+A`` 后按 ``Control-H`` 显示可用命令列表
 
-详情请参阅 |minicom| 手册。
+详情请参阅 |picocom| 手册。
 
-
-配置完成后退出设置。此时 Minicom 应已连接到 Red Pitaya：
-
-.. figure:: img/minicom_connected.png
-    :width: 1000
 
 如果系统要求登录 Red Pitaya，请使用以下凭据：
 
     - **用户名：** ``root``
     - **密码：** ``root``
 
-保持 Minicom 打开，拔掉 Red Pitaya 的电源。重新插入电源后，应能看到 Red Pitaya 的启动序列。
+保持 picocom 打开，拔掉 Red Pitaya 的电源。重新插入电源后，应能看到 Red Pitaya 的启动序列。
 
 在启动序列开始时，可以按任意键停止自动启动过程并进入 Zynq U-Boot shell。这对于调试和修改启动参数很有用。
 
-.. figure:: img/minicom_zynq_boot.png
-    :width: 1000
+.. code-block:: text
 
+    U-Boot 2022.01 (Nov 27 2024 - 05:10:38 +0000), Build: jenkins-RED_PITAYA_UNIFY-Kernel-212
 
+    CPU:   Zynq 7z010
+    Silicon: v3.1
+    DRAM:  ECC disabled 512 MiB
+    Flash: 0 Bytes
+    NAND:  0 MiB
+    MMC:   mmc@e0100000: 0
+    Loading Environment from nowhere... OK
+    In:    serial@e0000000
+    Out:   serial@e0000000
+    Err:   serial@e0000000
+    Net:
+    ZYNQ GEM: e000b000, mdio bus e000b000, phyaddr 1, interface rgmii-id
+    eth0: ethernet@e000b000
+    Hit any key to stop autoboot:  0
+    Zynq> 
+    Zynq> █
 
-如果看不到启动序列，请检查 Red Pitaya 与 PC 之间的连接以及 Minicom 中的设置。
+如果看不到启动序列，请检查 Red Pitaya 与 PC 之间的连接以及 picocom 中的设置。
 
 ``screen``
 ------------
 
 GNU ``screen`` 通常是一个终端复用器。它也支持连接串行控制台，并提供配置串行连接波特率、字节长度、奇偶校验和流控制的语法。
 
-与 ``Minicom`` 相比，它提供更好的字体，并支持调整终端窗口大小。
+与 ``picocom`` 相比，它提供更好的字体，并支持调整终端窗口大小。
 
 .. code-block:: shell-session
 
     $ sudo screen /dev/ttyUSB1 115200 cs8
 
-与 ``Minicom`` 类似，``screen`` 需要使用特殊的 ``Control+A`` 按键序列进行操作。
+与 ``picocom`` 类似，``screen`` 需要使用特殊的 ``Control+A`` 按键序列进行操作。
 详情请参阅 |screen| 手册。
 
 
-配置方式与 ``Minicom`` 相同。详情请参阅上一节。
+配置方式与 ``picocom`` 相同。详情请参阅上一节。
 
 参考启动序列
 =======================

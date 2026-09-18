@@ -6,7 +6,7 @@ Windows Linux 子系统设置
 
 Windows Linux 子系统（WSL）直接在 Windows 上提供 Linux 环境，可用于以下 Red Pitaya 开发任务：
 
-- 使用 ``minicom`` 访问串行控制台
+- 使用 ``picocom`` 访问串行控制台
 - 构建和编译软件
 - 运行基于 Linux 的开发工具
 - 访问 USB 设备（包括 Red Pitaya SD 卡）
@@ -76,7 +76,7 @@ USB 设备访问设置
 .. code-block:: bash
 
     sudo apt update
-    sudo apt install linux-tools-generic hwdata minicom
+    sudo apt install linux-tools-generic hwdata picocom
     sudo update-alternatives --install /usr/local/bin/usbip usbip /usr/lib/linux-tools/*-generic/usbip 20
 
 |

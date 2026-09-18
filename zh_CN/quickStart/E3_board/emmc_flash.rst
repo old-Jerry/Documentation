@@ -46,7 +46,7 @@
 
 * 一块已连接 QSPI eMMC 模块的 Red Pitaya 板卡（参见 :ref:`QSPI eMMC 板连接 <QSPI_eMMC_board>`）。
 * 一根连接到 Red Pitaya **CON** 端口的 USB 转串口控制台线缆。
-* 一个配置为 **115200 波特率、8N1** 的终端程序，例如 PuTTY、minicom 或 screen。
+* 一个配置为 **115200 波特率、8N1** 的终端程序，例如 PuTTY、picocom 或 screen。
 * 一台运行 `balenaEtcher <https://etcher.balena.io/>`_ 等磁盘镜像写入工具的 PC。
 * 一根用于连接 Red Pitaya USB 端口和 PC 的 USB 线缆（eMMC 将显示为 USB 驱动器）。
 * 已在 QSPI eMMC 模块上禁用看门狗（参见上文 :ref:`emmc_flash_watchdog_note`）。

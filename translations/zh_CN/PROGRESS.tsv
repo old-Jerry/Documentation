@@ -336,12 +336,12 @@ developerGuide/software/configuration/remote_deploy/remote_sw_deploy.rst	done	2	
 developerGuide/software/configuration/service_management.rst	done	2	2bb2c8e3bfae2c99653348c5815c8c8adaab9a66	首批
 developerGuide/software/configuration/spi/spi.rst	done	2	2bb2c8e3bfae2c99653348c5815c8c8adaab9a66	首批
 developerGuide/software/configuration/tft/TFT.rst	done	2	2bb2c8e3bfae2c99653348c5815c8c8adaab9a66	首批
-developerGuide/software/getting_started/console/console.rst	done	2	2bb2c8e3bfae2c99653348c5815c8c8adaab9a66	首批
+developerGuide/software/getting_started/console/console.rst	done	2	5c39e718fbfb161e88e5c97cae3907c4ce52a322	首批；2026-09-18 同步上游 picocom 更新
 developerGuide/software/getting_started/console_access.rst	done	2	2bb2c8e3bfae2c99653348c5815c8c8adaab9a66	首批
 developerGuide/software/getting_started/cpp_make_install.rst	done	2	2bb2c8e3bfae2c99653348c5815c8c8adaab9a66	首批
 developerGuide/software/getting_started/getting_started.rst	done	2	2bb2c8e3bfae2c99653348c5815c8c8adaab9a66	首批
 developerGuide/software/getting_started/ssh/ssh.rst	done	2	2bb2c8e3bfae2c99653348c5815c8c8adaab9a66	首批
-developerGuide/software/getting_started/wsl_setup.rst	done	2	2bb2c8e3bfae2c99653348c5815c8c8adaab9a66	首批
+developerGuide/software/getting_started/wsl_setup.rst	done	2	5c39e718fbfb161e88e5c97cae3907c4ce52a322	首批；2026-09-18 同步上游 picocom 更新
 developerGuide/software/intro.rst	done	2	2bb2c8e3bfae2c99653348c5815c8c8adaab9a66	首批
 developerGuide/software/security.rst	done	2	2bb2c8e3bfae2c99653348c5815c8c8adaab9a66	首批
 developerGuide/software/software.rst	done	2	2bb2c8e3bfae2c99653348c5815c8c8adaab9a66	首批
@@ -357,7 +357,7 @@ developerGuide/software/troubleshooting/troubleshooting.rst	done	2	2bb2c8e3bfae2
 index.rst	done	3	2bb2c8e3bfae2c99653348c5815c8c8adaab9a66	首批
 intro.rst	done	3	2bb2c8e3bfae2c99653348c5815c8c8adaab9a66	首批
 quickStart/E3_board/e3_addon_board.rst	done	1	2bb2c8e3bfae2c99653348c5815c8c8adaab9a66	首批
-quickStart/E3_board/emmc_flash.rst	done	1	2bb2c8e3bfae2c99653348c5815c8c8adaab9a66	首批
+quickStart/E3_board/emmc_flash.rst	done	1	5c39e718fbfb161e88e5c97cae3907c4ce52a322	首批；2026-09-18 同步上游 picocom 更新
 quickStart/ID_guide/ID_guide.rst	done	1	2bb2c8e3bfae2c99653348c5815c8c8adaab9a66	首批
 quickStart/OS_update/OS_update.rst	done	1	2bb2c8e3bfae2c99653348c5815c8c8adaab9a66	首批
 quickStart/SDcard/SDcard.rst	done	1	2bb2c8e3bfae2c99653348c5815c8c8adaab9a66	首批
