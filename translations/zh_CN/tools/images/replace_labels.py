@@ -50,7 +50,7 @@ def sample_fg(im, x0, y0, x1, y1, bg):
 
 def fit_font(draw, text, box_w, box_h, lines=1):
     # a block that held N English lines should get a font about one line tall
-    size = max(8, int(box_h / max(1, lines) * 0.95))
+    size = max(8, int(box_h / max(1, lines) * 0.85))
     while size > 8:
         f = font_at(size)
         b = draw.textbbox((0, 0), text, font=f)
@@ -63,13 +63,19 @@ def process(item):
     im = Image.open(item["src"]).convert("RGBA")
     d = ImageDraw.Draw(im)
     pad = 2
+    boxes = []
     for lb in item["labels"]:
         x0 = int(lb["x"]) - pad; y0 = int(lb["y"]) - pad
         x1 = int(lb["x"] + lb["w"]) + pad; y1 = int(lb["y"] + lb["h"]) + pad
         x0, y0 = max(0, x0), max(0, y0); x1, y1 = min(im.width, x1), min(im.height, y1)
         bg = sample_bg(im, x0, y0, x1, y1)
         fg = lb.get("color") or sample_fg(im, x0, y0, x1, y1, bg)
+        boxes.append((lb, x0, y0, x1, y1, bg, fg))
+    # pass 1: erase every label first, so a later box never wipes an earlier text
+    for lb, x0, y0, x1, y1, bg, fg in boxes:
         d.rectangle([x0, y0, x1, y1], fill=bg + (255,))
+    # pass 2: draw the translations
+    for lb, x0, y0, x1, y1, bg, fg in boxes:
         bw, bh = x1 - x0, y1 - y0
         # a tall narrow box held vertical (rotated) text: render rotated 90 degrees
         vertical = lb.get("rotate") or (bh > 1.8 * bw and len(lb["text"]) > 1)

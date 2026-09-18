@@ -52,7 +52,7 @@ def main():
     rules = []
     with open(gloss_path, encoding='utf-8') as f:
         for row in csv.reader(f, delimiter='\t'):
-            if not row or row[0].startswith('#') or len(row) < 2: continue
+            if len(row) < 2: continue   # comment lines have no tab; a '#' label (code comment) is valid
             rules.append((norm(row[0]), row[1].strip(), row[2].strip() if len(row) > 2 else ''))
     plan, unmatched = [], {}
     for entry in json.load(open(ocr_path)):
@@ -83,7 +83,10 @@ def main():
             if hit is None:
                 if only is not None: unmatched.setdefault(src, []).append(b['text'])
                 continue
-            labels.append({'x': b['x'], 'y': b['y'], 'w': b['w'], 'h': b['h'], 'text': hit})
+            lab = {'x': b['x'], 'y': b['y'], 'w': b['w'], 'h': b['h'], 'text': hit}
+            if b['text'].lstrip().startswith(('#', '-', '+', '*')):
+                lab['align'] = 'left'   # code comments / list items keep their left edge
+            labels.append(lab)
         if labels:
             rel = src.split('/zh_CN/', 1)[1] if '/zh_CN/' in src else os.path.basename(src)
             dst = os.path.join(out_dir, rel); os.makedirs(os.path.dirname(dst), exist_ok=True)

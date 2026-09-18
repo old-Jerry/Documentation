@@ -1,6 +1,7 @@
 import Foundation
 import Vision
 import AppKit
+import ImageIO
 
 struct Box: Codable { let text: String; let conf: Float; let x: Double; let y: Double; let w: Double; let h: Double }
 struct Result: Codable { let file: String; let width: Int; let height: Int; let boxes: [Box] }
@@ -8,7 +9,9 @@ struct Result: Codable { let file: String; let width: Int; let height: Int; let 
 var results: [Result] = []
 let args = Array(CommandLine.arguments.dropFirst())
 for path in args {
-    guard let img = NSImage(contentsOfFile: path), let cg = img.cgImage(forProposedRect: nil, context: nil, hints: nil) else {
+    // ImageIO returns the stored pixels without applying EXIF orientation, matching Pillow
+    guard let src = CGImageSourceCreateWithURL(URL(fileURLWithPath: path) as CFURL, nil),
+          let cg = CGImageSourceCreateImageAtIndex(src, 0, nil) else {
         results.append(Result(file: path, width: 0, height: 0, boxes: [])); continue
     }
     let W = cg.width, H = cg.height
