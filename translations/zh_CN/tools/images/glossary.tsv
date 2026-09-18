@@ -1,0 +1,90 @@
+# 图片标签词表：英文标签<TAB>中文<TAB>[路径过滤子串]
+# 英文列匹配 OCR 识别到的整行（或合并后的多行块），忽略大小写和 : . , ; ( ) [ ]
+direct usb connection	直接 USB 连接
+direct connection	直接连接
+access point	接入点
+my_wifi network	my_WiFi 网络
+network	网络	connection-scheme-wifi
+network	网络	RPs_to_PC_conn
+client pc	客户端 PC
+multiple red pitaya devices	多台 Red Pitaya 设备
+circular memory buffer	循环内存缓冲区
+relative memory adress	相对内存地址
+captured data	采集的数据
+acquisition write pointer	采集写指针
+trigger position inside memory	触发位置（内存中）
+trigger position	触发位置
+captured data buffer	采集数据缓冲区
+received array index	接收数组索引
+trigger delay	触发延迟
+secondary 2	从板 2
+secondary 1	从板 1
+primary	主板
+clock and trigger	时钟与触发
+circular buffer	循环缓冲区
+ch1 buffer	CH1 缓冲区
+chi buffer	CH1 缓冲区
+ch2 buffer	CH2 缓冲区
+mid address	中间地址
+ddr address	DDR 地址
+previous commands	之前的命令
+send control command	发送控制命令
+send query command	发送查询命令
+check error	检查错误
+the following commands	后续命令
+read answer from server	从服务器读取应答
+error 9000 + rp api error code	错误：9000 + RP API 错误码
+fatal error 9500 + rp api error code	致命错误：9500 + RP API 错误码
+stop	停止	SCPI_
+not connected	未连接
+4 not connected	4 未连接
+8 not connected	8 未连接
+can low	CAN 低
+can high	CAN 高
+7 can high	7 CAN 高
+ground	地
+5 shield - optional	5（屏蔽，可选）
+6 ground -optional	6（地，可选）
+9 power	9 电源
+agilent 33250a signal generator	Agilent 33250A 信号发生器
+signal generator	信号发生器
+output	输出	Measurement_setup
+generated signal	生成的信号
+agilent e4404b spectrum analyzer	Agilent E4404B 频谱分析仪
+spectrum analyzer	频谱分析仪
+red pitaya board	Red Pitaya 板卡
+fft analysis	FFT 分析
+•local address	.local 地址
+local address	.local 地址
+qr code	二维码
+board name	板卡名称
+mac address	MAC 地址
+notice proper position of bumps	注意凸起的正确位置
+follow the specified jumper orientation to improve step-response of input channel	按指定的跳线方向安装，以改善输入通道的阶跃响应
+follow the specified jumper orientation to	按指定的跳线方向安装，
+improve step-response of input channel	以改善输入通道的阶跃响应
+backend	后端
+frontend	前端
+application	应用程序
+json data	JSON 数据
+son data	JSON 数据
+layout	布局
+style	样式
+logic	逻辑
+controller	控制器
+params	参数
+signals	信号
+your application	你的应用程序
+process	处理
+handle	处理
+settings	设置	webapp
+web ui	Web 界面
+start	启动	webapp
+communicate	通信
+load image	加载镜像
+load	加载	webapp
+received array index •	接收数组索引
+received array	接收数组
+index	索引	Python_buff
+draw	绘制	webapp
+user	用户	webapp

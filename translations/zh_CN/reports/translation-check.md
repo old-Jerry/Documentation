@@ -19,11 +19,11 @@
 
 ## 重复 label
 
-- `NB6L72` at `developerGuide/hardware/ORIG_GEN/125-14_4IN/top.rst:837`
-- `NB6L72` at `developerGuide/hardware/ORIG_GEN/122-16_EXT/top.rst:197`
-- `NB6L72` at `developerGuide/hardware/ORIG_GEN/125-14_EXT/top.rst:199`
 - `NB6L72` at `developerGuide/hardware/GEN2/125-14_Gen2_Pro/top.rst:688`
 - `NB6L72` at `developerGuide/hardware/GEN2/faq/faq.rst:242`
 - `NB6L72` at `developerGuide/hardware/GEN2/125-14_Gen2_Z7020_Pro/top.rst:690`
 - `LMK03318` at `developerGuide/hardware/GEN2/65-16_TI/top.rst:612`
 - `LMK03318` at `developerGuide/hardware/GEN2/125-14_TI/top.rst:598`
+- `NB6L72` at `developerGuide/hardware/ORIG_GEN/125-14_4IN/top.rst:837`
+- `NB6L72` at `developerGuide/hardware/ORIG_GEN/122-16_EXT/top.rst:197`
+- `NB6L72` at `developerGuide/hardware/ORIG_GEN/125-14_EXT/top.rst:199`
