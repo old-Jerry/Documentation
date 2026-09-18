@@ -130,4 +130,6 @@ python3 replace_labels.py plan.json                          # 需要 Pillow
 ## 8. 发布
 
 中文版托管在 Read the Docs：项目 `redpitaya-zh-cn`，配置文件路径设为 `zh_CN/.readthedocs.yaml`，
-默认分支 `codex/zh-cn-translation`。推送后需要在 Read the Docs 后台手动 Rebuild（或配置 GitHub webhook）。
+默认分支 `codex/zh-cn-translation`。仓库已配置 GitHub webhook（仓库 Settings → Webhooks，
+指向 Read the Docs 的 `/api/v2/webhook/redpitaya-zh-cn/...`），推送到该分支会自动触发构建；
+若构建没有自动开始，到 Read the Docs 项目的“集成”页查看投递记录或手动 Rebuild。
